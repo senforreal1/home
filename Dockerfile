@@ -1,11 +1,11 @@
-FROM python:3.12-slim
+FROM python:3.10
 
 WORKDIR /app
 
-COPY . .
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install uv
-RUN uv pip install --system --no-cache-dir -r requirements.txt
+COPY app app
 
 EXPOSE 7860
 
